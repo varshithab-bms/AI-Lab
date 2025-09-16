@@ -1,6 +1,4 @@
 import heapq
-
-# Moves: up, down, left, right
 moves = [(-1, 0), (1, 0), (0, -1), (0, 1)]
 
 def heuristic(board, goal):
@@ -82,9 +80,6 @@ def print_board(board):
     for row in board:
         print(' '.join(str(x) for x in row))
 
-
-# Direct execution without 'if __name__ == "__main__":'
-
 initial_state = get_user_input("initial state")
 goal_state = get_user_input("goal state")
 
@@ -99,3 +94,31 @@ if solution:
         print()
 else:
     print("No solution found.")
+
+'''
+OUTPUT:
+Enter the initial state (use 0 for the blank tile).
+Enter row 1 (e.g., 1 2 3): 1 2 3
+Enter row 2 (e.g., 1 2 3): 4 5 6
+Enter row 3 (e.g., 1 2 3): 7 0 8
+
+Enter the goal state (use 0 for the blank tile).
+Enter row 1 (e.g., 1 2 3): 1 2 3
+Enter row 2 (e.g., 1 2 3): 4 5 6
+Enter row 3 (e.g., 1 2 3): 7 8 0
+
+Solving the puzzle using A* search...
+
+Solution found in 1 moves:
+
+Step 0:
+1 2 3
+4 5 6
+7 0 8
+
+Step 1:
+1 2 3
+4 5 6
+7 8 0
+
+'''
