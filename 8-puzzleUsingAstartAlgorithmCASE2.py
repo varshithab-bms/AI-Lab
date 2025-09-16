@@ -4,13 +4,20 @@ import heapq
 moves = [(-1, 0), (1, 0), (0, -1), (0, 1)]
 
 def heuristic(board, goal):
-    """Count of misplaced tiles (excluding 0)."""
-    count = 0
+"""Manhattan distance heuristic."""
+    dist = 0
     for i in range(3):
         for j in range(3):
-            if board[i][j] != 0 and board[i][j] != goal[i][j]:
-                count += 1
-    return count
+            val = board[i][j]
+            if val != 0:
+                # Find tile's position in goal state
+                for x in range(3):
+                    for y in range(3):
+                        if goal[x][y] == val:
+                            dist += abs(i - x) + abs(j - y)
+                            break
+    return dist
+
 
 def find_blank(board):
     for i in range(3):
